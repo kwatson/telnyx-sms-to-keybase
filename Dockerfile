@@ -8,3 +8,5 @@ RUN apk add --no-cache git \
 
 ADD hooks.json /root/
 ADD send-to-keybase.sh /root/
+
+RUN chmod +x /root/send-to-keybase.sh
