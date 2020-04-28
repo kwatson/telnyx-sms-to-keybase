@@ -1,0 +1,27 @@
+[
+  {
+    "id": "smsincoming",
+    "execute-command": "/root/send-to-keybase.sh",
+    "command-working-directory": "/root",
+    "pass-arguments-to-command": [
+      {
+        "source": "payload",
+        "name": "data.payload.from.phone_number"
+      },
+      {
+        "source": "payload",
+        "name": "data.payload.text"
+      }
+    ],
+    "trigger-rule": {
+      "match": {
+        "type": "value",
+        "value": "message.received",
+        "parameter": {
+          "source": "payload",
+          "name": "data.event_type"
+        }
+      }      
+    }
+  }
+]
