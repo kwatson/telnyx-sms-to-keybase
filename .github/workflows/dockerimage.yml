@@ -24,10 +24,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag telnyx-sms-to-keybase:latest
+        run: docker build . --file Dockerfile --tag docker.pkg.github.com/kwatson/telnyx-sms-to-keybase/stable:latest
       - name: Log into registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
       - name: Push image
-        run: |
-          IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/telnyx-sms-to-keybase:latest
-          docker push $IMAGE_ID
+        run: docker push docker.pkg.github.com/kwatson/telnyx-sms-to-keybase/stable:latest
